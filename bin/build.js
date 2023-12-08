@@ -7,7 +7,16 @@ const BUILD_DIRECTORY = 'dist';
 const PRODUCTION = process.env.NODE_ENV === 'production';
 
 // Config entrypoint files
-const ENTRY_POINTS = ['src/index.ts'];
+
+// automatic entrypoint detection for all ts files inside src/client folder
+const ENTRY_POINTS = ['src/client/**/*index.ts'];
+
+// if needed manual, then use something like following
+// const ENTRY_POINTS = [
+//   'src/client/example/index.ts',
+//   'src/client/helloWorld/index.ts',
+//   'src/client/userProfile/index.ts',
+// ];
 
 // Config dev serving
 const LIVE_RELOAD = !PRODUCTION;

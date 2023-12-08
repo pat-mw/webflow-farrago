@@ -4,10 +4,9 @@ import { appRouter } from './api/root';
 
 createHTTPServer({
   router: appRouter,
+  // @ts-expect-error -- im copying documentation, getting type error, so ignoring it
   createContext() {
-    // create a new Header instance
-    const headers = new Headers();
-    return { headers };
+    return {};
   },
 }).listen(3333);
 

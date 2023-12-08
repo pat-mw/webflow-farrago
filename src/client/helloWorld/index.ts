@@ -9,6 +9,6 @@ window.Webflow.push(async () => {
 
 // create async function to greet user
 export const greetUser = async (name: string) => {
-  const { greeting } = await client.helloWorld.hello.query({ text: name });
-  console.log(greeting);
+  const result = await client.helloWorld.hello.query({ text: name });
+  console.log(result);
 };

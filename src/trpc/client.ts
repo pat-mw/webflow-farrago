@@ -10,7 +10,7 @@ export const client = createTRPCProxyClient<AppRouter>({
   transformer,
   links: [
     httpBatchLink({
-      url: 'http://localhost:3000/trpc',
+      url: 'http://localhost:3333/trpc/',
       // You can pass any HTTP headers you wish here
       //   async headers() {
       //     return {
@@ -19,6 +19,8 @@ export const client = createTRPCProxyClient<AppRouter>({
       //     };
       //   },
       fetch(url, options) {
+        // eslint-disable-next-line no-console
+        console.log('fetch', url, options);
         return fetch(url, {
           ...options,
           mode: 'no-cors',

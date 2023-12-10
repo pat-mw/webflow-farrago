@@ -1,23 +1,11 @@
-import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
-// import { transformer } from './shared';
-import superjson from 'superjson';
+import { createTRPCProxyClient, httpLink } from '@trpc/client';
 
-import type { AppRouter } from '@/server/api/root';
+import type { AppRouter } from '@/api/root';
 
-export const transformer = superjson;
-
-export const client = createTRPCProxyClient<AppRouter>({
-  transformer,
+export const api = createTRPCProxyClient<AppRouter>({
   links: [
-    httpBatchLink({
-      url: 'http://localhost:3333/trpc/',
-      // You can pass any HTTP headers you wish here
-      //   async headers() {
-      //     return {
-      //       // authorization: getAuthCookie(),
-      //       'Access-Control-Allow-Origin': '*',
-      //     };
-      //   },
+    httpLink({
+      url: 'http://localhost:3333/',
       fetch(url, options) {
         // eslint-disable-next-line no-console
         console.log('fetch', url, options);

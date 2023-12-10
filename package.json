@@ -23,9 +23,10 @@
     "dist"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node ./bin/build.js",
-    "dev:server": "tsx watch src/server/server",
-    "dev:hello": "echo HELLO",
+    "client": "cross-env NODE_ENV=development node ./bin/build.js",
+    "dev:client": "wait-port 3333 && node ./bin/build.js",
+    "dev:server": "tsx watch ./src/trpc/server",
+    "dev": "run-p dev:* --print-label",
     "build": "cross-env NODE_ENV=production node ./bin/build.js",
     "lint": "eslint --ignore-path .gitignore ./src && prettier --check ./src",
     "lint:fix": "eslint --ignore-path .gitignore ./src --fix",
@@ -50,9 +51,11 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.1.0",
     "tsx": "^4.6.2",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "wait-port": "^1.0.1"
   },
   "dependencies": {
     "@finsweet/ts-utils": "^0.40.0",

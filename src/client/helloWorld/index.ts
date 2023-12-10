@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { client } from '@/trpc/client';
+import { api } from '@/trpc/client';
 
 window.Webflow ||= [];
 window.Webflow.push(async () => {
@@ -8,7 +8,8 @@ window.Webflow.push(async () => {
 });
 
 // create async function to greet user
-export const greetUser = async (name: string) => {
-  const result = await client.helloWorld.hello.query({ text: name });
-  console.log(result);
-};
+async function greetUser(name: string) {
+  console.log(`greeting user`);
+  const result = await api.helloWorld.hello.query({ text: name });
+  console.log(`result`, result);
+}

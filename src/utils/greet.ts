@@ -7,7 +7,9 @@ import { getPublishDate } from '@finsweet/ts-utils';
 export const greetUser = (name: string) => {
   const publishDate = getPublishDate();
 
+  // eslint-disable-next-line no-console
   console.log(`Hello ${name}!`);
+  // eslint-disable-next-line no-console
   console.log(
     `This site was last published on ${publishDate?.toLocaleDateString('en-US', {
       year: 'numeric',
